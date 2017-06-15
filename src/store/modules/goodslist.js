@@ -2,20 +2,31 @@ import request from 'superagent'
 //import jsonp from 'superagent-jsonp'
 
 const state = {
-  hotGoodsList: []
+  bannerList:[],
+  hotGoodsList: [],
+  recommondList:[]
 }
 
 const mutations = {
-  getGoodsList (state, payload) {
+  commitState (state, payload) {
     switch (payload.tag) {
       case 'goodsList':
         state.hotGoodsList = payload.res
         break;
+      case 'recommondList':
+        state.recommondList = payload.res;
+      break;
+      case 'banners':
+        state.bannerList = payload.res;
       default:
         break;
     }
   }
 }
+
+var banners=[{
+        src:'http://youam.yunyiwd.com/upload/image/gh_8ac59f118265/20161129/20161129091654_972.jpg'
+      }];
 
 var list= [{
         id:'10',
@@ -48,14 +59,39 @@ var list= [{
         href:'goods.html',
         salePrice:'199.00',
         marketPrice:'299.00'
+      }];
+
+var recommond=[{
+        id:'1',
+        src:'http://youam.yunyiwd.com/upload/image/gh_8ac59f118265/20161129/20161129182521_887.png',
+        href:'recommond.html'
+      },
+      {
+        id:'2',
+        src:'http://youam.yunyiwd.com/upload/image/gh_8ac59f118265/20161122/20161122100453_727.png',
+        href:'recommond.html'
       }]
 
 const actions = {
   getGoodsList ({ commit }) {
     commit({
-      type: 'getGoodsList',
+      type: 'commitState',
       tag: 'goodsList',
       res: list
+    })
+  },
+  getRecommondList({commit}){
+    commit({
+      type:'commitState',
+      tag:'recommondList',
+      res:recommond
+    })
+  },
+  getBannerList({commit}){
+    commit({
+      type:'commitState',
+      tag:'banners',
+      res:banners
     })
   }
 }

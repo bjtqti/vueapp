@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <header-box :items="banners"></header-box>
+    <header-box :items="bannerList"></header-box>
     <nav-menu></nav-menu>
-    <recommond :items="recommond"></recommond>
+    <recommond :items="recommondList"></recommond>
     <home-title title="爆抢专区"></home-title>
     <goods-list :items="hotGoodsList"></goods-list>
     <home-title title="今日必抢"></home-title>
@@ -27,36 +27,32 @@ export default {
     HeaderBox,NavMenu,Recommond,HomeTitle,GoodsList,FooterBar,Loading
   },
   data () {
-    return {
-      banners:[{
-        src:'http://youam.yunyiwd.com/upload/image/gh_8ac59f118265/20161129/20161129091654_972.jpg'
-      }],
-      recommond:[{
-        id:'1',
-        src:'http://youam.yunyiwd.com/upload/image/gh_8ac59f118265/20161129/20161129182521_887.png',
-        href:'recommond.html'
-      },
-      {
-        id:'2',
-        src:'http://youam.yunyiwd.com/upload/image/gh_8ac59f118265/20161122/20161122100453_727.png',
-        href:'recommond.html'
-      }]
-    }
+    return {}
   },
   computed: {
     // Getting Vuex State from store/modules/book
     ...mapState({
-      hotGoodsList: state => state.goods.hotGoodsList
+      hotGoodsList: state => state.goods.hotGoodsList,
+      recommondList:state=>state.goods.recommondList,
+      bannerList:state=>state.goods.bannerList
     })
   },
   methods: {
     getGoodsList() {
       this.$store.dispatch('getGoodsList')
+    },
+    getRecommondList() {
+      this.$store.dispatch('getRecommondList')
+    },
+    getBannerList(){
+      this.$store.dispatch('getBannerList')
     }
   },
   created () {
     // Getting books data on created
-    this.getGoodsList()
+    this.getGoodsList();
+    this.getRecommondList();
+    this.getBannerList();
   }
 }
 </script>
