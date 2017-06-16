@@ -29,7 +29,7 @@ export default new Router({
 	routes: [
 		{path:'/',name:'Home',component:Home},
     {path: '/member',name:'Member', component: NotFound },
-		{path: '/error',name:'500', component: Error },
+		{path: '/error',name:'Error', component: Error },
 		{path: '*',component: NotFound }
 	]
 })

@@ -22,7 +22,7 @@ import FooterBar from '@/components/FooterBox'
 import Loading from '@/components/LoadingBox'
 import { mapState } from 'vuex'
 export default {
-  name: 'home',
+  name: 'weidian',
   components: { 
     HeaderBox,NavMenu,Recommond,HomeTitle,GoodsList,FooterBar,Loading
   },

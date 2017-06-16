@@ -4,15 +4,15 @@
       <i class="bbc-icon bbc-icon-home"></i>
       <span class="atips">首页</span>
     </router-link>
-    <router-link :to="{name:'500'}">
+    <router-link :to="{name:'Error'}">
       <i class="bbc-icon bbc-icon-category"></i>
       <span class="atips">分类</span>
     </router-link>
-    <router-link :to="{name:'500'}">
+    <router-link :to="{name:'Error'}">
       <i class="bbc-icon bbc-icon-cart"></i>
       <span class="atips">购物车</span>
     </router-link>
-    <router-link :to="{name:'500'}">
+    <router-link :to="{name:'Error'}">
       <i class="bbc-icon bbc-icon-store"></i>
       <span class="atips">店铺</span>
     </router-link>

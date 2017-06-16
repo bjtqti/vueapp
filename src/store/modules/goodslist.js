@@ -1,5 +1,5 @@
 import request from 'superagent'
-//import jsonp from 'superagent-jsonp'
+import jsonp from 'superagent-jsonp'
 
 const state = {
   bannerList:[],
@@ -15,9 +15,13 @@ const mutations = {
         break;
       case 'recommondList':
         state.recommondList = payload.res;
-      break;
+        break;
       case 'banners':
         state.bannerList = payload.res;
+        break;
+      case 'test':
+        console.log(payload.res)
+        break;
       default:
         break;
     }
@@ -79,6 +83,20 @@ const actions = {
       tag: 'goodsList',
       res: list
     })
+
+    request
+      .get('https://api.douban.com/v2/book/search?q=虚构类&count=3')
+      .use(jsonp)
+      .end((err, res) => {
+        console.log(res)
+        if (!err) {
+          commit({
+            type: 'commitState',
+            tag: 'test',
+            res: res.body.books
+          })
+        }
+      })
   },
   getRecommondList({commit}){
     commit({
